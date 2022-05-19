@@ -57,10 +57,10 @@
 		</div>
 		<script>
 			let select=document.getElementById("bgcolor");
-            let node=document.createElement("p");
+            		let node=document.createElement("p");
 			function bgcolor(){
 				let selval=select.value;
-                if(selval=="red"){
+                		if(selval=="red"){
 					node.style.backgroundColor="red";
 				}else if(selval=="blue"){
 					node.style.backgroundColor="blue";
@@ -72,30 +72,30 @@
 					node.style.backgroundColor="white";
 				}
 			}
-            function color(){
-                let val=document.querySelectorAll('input[name="font"]');
-                if(val[0].checked) {
-                    node.style.color='red';
-                }else if(val[1].checked){
-                    node.style.color='blue';
-                }else if(val[2].checked){
-                    node.style.color='green';
-                }else if(val[3].checked){
-                    node.style.color='black';
-                }else if(val[4].checked){
-                    node.style.color='white';
-                }
-            }
-            function multi(){
-                let val=document.getElementById("range");
-                let txt=document.getElementById("txt").value;
-                for(let i=0; i<val.value; i++){
-                    node.innerHTML+=txt;
-                }
-            }
+            		function color(){
+                		let val=document.querySelectorAll('input[name="font"]');
+                		if(val[0].checked) {
+                    			node.style.color='red';
+                		}else if(val[1].checked){
+                    			node.style.color='blue';
+                		}else if(val[2].checked){
+                    			node.style.color='green';
+                		}else if(val[3].checked){
+                    			node.style.color='black';
+                		}else if(val[4].checked){
+                    			node.style.color='white';
+                		}
+            		}
+            		function multi(){
+                		let val=document.getElementById("range");
+                		let txt=document.getElementById("txt").value;
+                		for(let i=0; i<val.value; i++){
+                    		node.innerHTML+=txt;
+                		}
+            		}
 			function print(){
-                let field=document.getElementById("print");
-                field.appendChild(node);
+                		let field=document.getElementById("print");
+                		field.appendChild(node);
 			}
 		</script>
 	</body>
