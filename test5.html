@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>입력하기</title>
+		<style>
+			#wrap{
+				margin:0 auto;
+				width:60%;
+			}
+			fieldset{
+				border:1px solid black;
+				height:70px;
+				padding-top:30px;
+			}
+			#print{
+				padding:20px 20px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<fieldset>
+				<legend>배경색 선택</legend>
+				<select id="bgcolor" onselect="sltcolor(this.value)">
+					<option value="red">빨간색</option>
+					<option value="blue">파란색</option>
+					<option value="green">초록색</option>
+					<option value="black">검정색</option>
+					<option value="white">흰색</option>
+				</select>
+			</fieldset>
+			<fieldset>
+				<legend>문자색 선택</legend>
+				<input type="radio" id="red" name="font">적색
+				<input type="radio" id="blue" name="font">청색
+				<input type="radio" id="green" name="font">녹색
+				<input type="radio" id="black" name="font">흑색
+				<input type="radio" id="white" name="font">백색
+			</fieldset>
+			<fieldset>
+				<legend>문자 입력</legend>
+				<input type="text" id="txt" placeholder="문자를 입력">
+			</fieldset>
+			<fieldset>
+				<legend>출력횟수 선택</legend>
+				<input type="range" id="range" max="5" min="1" value="1">
+				<input type="button" id="btn" value="출력!!" onclick="print()">
+			</fieldset>
+			<fieldset id="print">
+				<legend>출력영역</legend>
+				<p id="out" ></p>
+			</fieldset>
+		</div>
+		<script>
+			let select=document.getElementById("bgcolor");
+			let p=document.getElementById("out");
+			let pstyle=p.style;
+			
+			function sltcolor(str){
+				if(str=="red"){
+					pstyle.background-color("red")
+				}else if(str=="blue"){
+					pstyle.background-color("blue")
+				}else if(str=="green"){
+					pstyle.background-color("green")
+				}else if(str=="black"){
+					pstyle.background-color("black")
+				}else{
+					pstyle.background-color("white")
+				}
+			}
+			
+			let btn=document.getElementById("btn");
+			function print(){
+				let txt=document.getElementById("txt").value;
+				p.innerHTML=txt;
+			}
+			console.log(pstyle.background-color);
+		</script>
+	</body>
+</html>
