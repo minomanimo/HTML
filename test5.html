@@ -16,14 +16,16 @@
 			#print{
 				padding:20px 20px;
 			}
-			
+			#out{
+                background-color: '';
+            }
 		</style>
 	</head>
 	<body>
 		<div id="wrap">
 			<fieldset>
 				<legend>배경색 선택</legend>
-				<select id="bgcolor" onselect="sltcolor(this.value)">
+				<select id="bgcolor" onchange="bgcolor()">
 					<option value="red">빨간색</option>
 					<option value="blue">파란색</option>
 					<option value="green">초록색</option>
@@ -33,11 +35,11 @@
 			</fieldset>
 			<fieldset>
 				<legend>문자색 선택</legend>
-				<input type="radio" id="red" name="font">적색
-				<input type="radio" id="blue" name="font">청색
-				<input type="radio" id="green" name="font">녹색
-				<input type="radio" id="black" name="font">흑색
-				<input type="radio" id="white" name="font">백색
+				<input type="radio" id="red" name="font" onchange="color()">적색
+				<input type="radio" id="blue" name="font" onchange="color()">청색
+				<input type="radio" id="green" name="font" onchange="color()">녹색
+				<input type="radio" id="black" name="font" onchange="color()">흑색
+				<input type="radio" id="white" name="font" onchange="color()">백색
 			</fieldset>
 			<fieldset>
 				<legend>문자 입력</legend>
@@ -45,39 +47,56 @@
 			</fieldset>
 			<fieldset>
 				<legend>출력횟수 선택</legend>
-				<input type="range" id="range" max="5" min="1" value="1">
+				<input type="range" id="range" max="5" min="1" value="1" onchange="multi()">
 				<input type="button" id="btn" value="출력!!" onclick="print()">
 			</fieldset>
 			<fieldset id="print">
 				<legend>출력영역</legend>
-				<p id="out" ></p>
+				
 			</fieldset>
 		</div>
 		<script>
 			let select=document.getElementById("bgcolor");
-			let p=document.getElementById("out");
-			let pstyle=p.style;
-			
-			function sltcolor(str){
-				if(str=="red"){
-					pstyle.background-color("red")
-				}else if(str=="blue"){
-					pstyle.background-color("blue")
-				}else if(str=="green"){
-					pstyle.background-color("green")
-				}else if(str=="black"){
-					pstyle.background-color("black")
-				}else{
-					pstyle.background-color("white")
+            let node=document.createElement("p");
+			function bgcolor(){
+				let selval=select.value;
+                if(selval=="red"){
+					node.style.backgroundColor="red";
+				}else if(selval=="blue"){
+					node.style.backgroundColor="blue";
+				}else if(selval=="green"){
+					node.style.backgroundColor="green";
+				}else if(selval=="black"){
+					node.style.backgroundColor="black";
+				}else if(selval=="white"){
+					node.style.backgroundColor="white";
 				}
 			}
-			
-			let btn=document.getElementById("btn");
+            function color(){
+                let val=document.querySelectorAll('input[name="font"]');
+                if(val[0].checked) {
+                    node.style.color='red';
+                }else if(val[1].checked){
+                    node.style.color='blue';
+                }else if(val[2].checked){
+                    node.style.color='green';
+                }else if(val[3].checked){
+                    node.style.color='black';
+                }else if(val[4].checked){
+                    node.style.color='white';
+                }
+            }
+            function multi(){
+                let val=document.getElementById("range");
+                let txt=document.getElementById("txt").value;
+                for(let i=0; i<val.value; i++){
+                    node.innerHTML+=txt;
+                }
+            }
 			function print(){
-				let txt=document.getElementById("txt").value;
-				p.innerHTML=txt;
+                let field=document.getElementById("print");
+                field.appendChild(node);
 			}
-			console.log(pstyle.background-color);
 		</script>
 	</body>
 </html>
